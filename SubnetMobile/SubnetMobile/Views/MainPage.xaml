@@ -2,10 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SubnetMobile.Views.MainPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             NavigationPage.HasNavigationBar="False">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
+    <StackLayout>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Label Style="{StaticResource HeaderLabel}" FontFamily="Roboto Mono" Text="Subnet Mobile"/>
+            <Label HorizontalOptions="Center" FontSize="Medium" Text="By: Reinielle Matt" Margin="72,0,0,0"/>
+        </StackLayout>
+
+        <Button HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" FontSize="Medium" Text="START"/>
     </StackLayout>
 
 </ContentPage>
