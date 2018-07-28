@@ -13,7 +13,7 @@
                     <OnIdiom x:TypeArguments="x:Double" Phone="32" Tablet="48"/>
                 </On>
             </OnPlatform>
-            
+
             <Style TargetType="{x:Type StackLayout}">
                 <Setter Property="BackgroundColor" Value="#2E2E2E"/>
                 <Setter Property="Padding" Value="4"/>

@@ -7,8 +7,20 @@
 
     <StackLayout>
         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-            <Label Style="{StaticResource HeaderLabel}" FontFamily="Roboto Mono" Text="Subnet Mobile"/>
-            <Label HorizontalOptions="Center" FontSize="Medium" Text="By: Reinielle Matt" Margin="72,0,0,0"/>
+            <Label Style="{StaticResource HeaderLabel}" FontFamily="Roboto Mono" Text="Subnet Mobile">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="Android" Value="larabiefont-free.regular.ttf#Larabiefont"/>
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+            <Label HorizontalOptions="Center" FontSize="Medium" Text="By: Reinielle Matt" Margin="72,0,0,0">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="Android" Value="larabiefont-free.regular.ttf#Larabiefont"/>
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
         </StackLayout>
 
         <Button HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" FontSize="Medium" Text="START"/>
