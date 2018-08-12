@@ -23,7 +23,7 @@
             </Label>
         </StackLayout>
 
-        <Button HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" FontSize="Medium" Text="START"/>
+        <Button Command="{Binding StartCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" FontSize="Medium" Text="START"/>
     </StackLayout>
 
 </ContentPage>

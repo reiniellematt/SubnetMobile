@@ -10,10 +10,20 @@ namespace SubnetMobile.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        public MainPageViewModel(INavigationService navigationService) 
-            : base (navigationService)
+        private readonly INavigationService _navigationService;
+
+        private DelegateCommand _startCommand;
+        public DelegateCommand StartCommand =>
+            _startCommand ?? (_startCommand = new DelegateCommand(ExecuteStartCommand));
+
+        public MainPageViewModel(INavigationService navigationService) : base (navigationService)
         {
-            Title = "Main Page";
+            _navigationService = navigationService;
+        }
+
+        private async void ExecuteStartCommand()
+        {
+            await _navigationService.NavigateAsync("QuestionsPage");
         }
     }
 }
