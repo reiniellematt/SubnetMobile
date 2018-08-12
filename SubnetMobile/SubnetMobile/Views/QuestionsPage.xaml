@@ -16,7 +16,7 @@
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
             <!-- First Octet -->
             <Entry Keyboard="Numeric" WidthRequest="40" MaxLength="3"/>
-            <Label TextColor="#2ECC71" FontSize="{StaticResource HeaderLabelFontSize}"/>
+            <Label TextColor="#2ECC71" FontSize="{StaticResource HeaderLabelFontSize}" Text="."/>
 
             <!-- Second Octet -->
             <Entry Keyboard="Numeric" WidthRequest="40" MaxLength="3"/>
@@ -32,5 +32,5 @@
 
         <Button HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" FontSize="Medium" Text="NEXT"/>
     </StackLayout>
-    
+
 </ContentPage>

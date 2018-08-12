@@ -24,7 +24,7 @@ namespace SubnetMobile
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/QuestionsPage");
+            await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
