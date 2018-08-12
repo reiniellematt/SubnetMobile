@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="SubnetMobile.Views.QuestionsPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout>
+        <!-- Number of Subnets -->
+        <Label Text="Enter number of subnets:"/>
+        <Entry Keyboard="Numeric" MaxLength="3"/>
+
+        <!-- IP Address Field -->
+        <Label Text="Starting IP Address"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <!-- First Octet -->
+            <Entry Keyboard="Numeric" WidthRequest="40" MaxLength="3"/>
+            <Label TextColor="#2ECC71" FontSize="{StaticResource HeaderLabelFontSize}"/>
+
+            <!-- Second Octet -->
+            <Entry Keyboard="Numeric" WidthRequest="40" MaxLength="3"/>
+            <Label TextColor="#2ECC71" FontSize="{StaticResource HeaderLabelFontSize}" Text="."/>
+
+            <!-- Third Octet -->
+            <Entry Keyboard="Numeric" WidthRequest="40" MaxLength="3"/>
+            <Label TextColor="#2ECC71" FontSize="{StaticResource HeaderLabelFontSize}" Text="."/>
+
+            <!-- Fourth Octet -->
+            <Entry Keyboard="Numeric" MinimumWidthRequest="40"/>
+        </StackLayout>
+
+        <Button HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" FontSize="Medium" Text="NEXT"/>
+    </StackLayout>
+    
+</ContentPage>

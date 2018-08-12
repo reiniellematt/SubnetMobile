@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
              x:Class="SubnetMobile.App">
+
     <prism:PrismApplication.Resources>
 
         <!-- Application resource dictionary -->
@@ -21,6 +22,7 @@
 
             <Style TargetType="{x:Type Label}">
                 <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="Medium"/>
                 <Setter Property="FontFamily" Value="Consolas"/>
             </Style>
 
@@ -36,7 +38,13 @@
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
             
+            <Style TargetType="{x:Type Entry}">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+
         </ResourceDictionary>
-        
+
     </prism:PrismApplication.Resources>
+
 </prism:PrismApplication>

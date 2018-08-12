@@ -24,13 +24,15 @@ namespace SubnetMobile
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/QuestionsPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
+            containerRegistry.RegisterForNavigation<QuestionsPage>();
+            containerRegistry.RegisterForNavigation<ResultsPage>();
         }
     }
 }
