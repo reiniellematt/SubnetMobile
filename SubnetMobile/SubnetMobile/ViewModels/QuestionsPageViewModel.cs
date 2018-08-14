@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace SubnetMobile.ViewModels
 {
-    public class QuestionsPageViewModel : ViewModelBase
+    public class QuestionsPageViewModel : BindableBase
     {
         private readonly INavigationService _navigationService;
         private readonly IEventAggregator _eventAggregator;
@@ -52,7 +52,6 @@ namespace SubnetMobile.ViewModels
         public DelegateCommand NextCommand => _nextCommand ?? (_nextCommand = new DelegateCommand(ExecuteNextCommand));
 
         public QuestionsPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator)
-           : base (navigationService)
         {
             _navigationService = navigationService;
             _eventAggregator = eventAggregator;

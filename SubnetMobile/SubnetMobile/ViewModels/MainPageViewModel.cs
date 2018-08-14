@@ -13,8 +13,8 @@ namespace SubnetMobile.ViewModels
         private readonly INavigationService _navigationService;
 
         private DelegateCommand _startCommand;
-        public DelegateCommand StartCommand =>
-            _startCommand ?? (_startCommand = new DelegateCommand(ExecuteStartCommand));
+
+        public DelegateCommand StartCommand => _startCommand ?? (_startCommand = new DelegateCommand(ExecuteStartCommand));
 
         public MainPageViewModel(INavigationService navigationService) : base (navigationService)
         {
@@ -23,7 +23,7 @@ namespace SubnetMobile.ViewModels
 
         private async void ExecuteStartCommand()
         {
-            await _navigationService.NavigateAsync("QuestionsPage");
+            await _navigationService.NavigateAsync("ResultsPage");
         }
     }
 }

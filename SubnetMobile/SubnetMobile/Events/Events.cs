@@ -7,4 +7,5 @@ using System.Text;
 namespace SubnetMobile.Events
 {
     public class IpEntryEvent : PubSubEvent<IpQuery> { }
+    public class IpResultsEvent : PubSubEvent<IpAddress> { }
 }
