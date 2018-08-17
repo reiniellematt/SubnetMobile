@@ -2,7 +2,7 @@
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
-using SubnetMobile.Events;
+using SubnetMobile.Helpers;
 using SubnetMobile.Models;
 using System;
 using System.Collections.Generic;

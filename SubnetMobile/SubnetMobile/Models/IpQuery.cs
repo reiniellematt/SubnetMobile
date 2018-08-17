@@ -8,5 +8,10 @@ namespace SubnetMobile.Models
     {
         public int NumberOfSubnets { get; set; }
         public IpAddress StartingIpAddress { get; set; }
+
+        internal void Subscribe(object ipQueryChanged)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

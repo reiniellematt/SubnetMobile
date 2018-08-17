@@ -2,7 +2,8 @@
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
-using SubnetMobile.Events;
+using Prism.Services;
+using SubnetMobile.Helpers;
 using SubnetMobile.Models;
 using System;
 using System.Collections.Generic;
@@ -15,17 +16,46 @@ namespace SubnetMobile.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IEventAggregator _eventAggregator;
 
+        private bool _hasResults = false;
+        private string _btnText;
+
+        public string BtnText
+        {
+            get { return _btnText; }
+            set { SetProperty(ref _btnText, value); }
+        }
+
+        private DelegateCommand mainBtnCommand;
+        public DelegateCommand MainBtnCommand =>
+            mainBtnCommand ?? (mainBtnCommand = new DelegateCommand(ExecuteMainBtnCommand));
+
         public ResultsPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator)
         {
             _navigationService = navigationService;
             _eventAggregator = eventAggregator;
 
-            _eventAggregator.GetEvent<IpResultsEvent>().Subscribe(IpResultsEventChanged);
+            if (_hasResults)
+            {
+                BtnText = "AGAIN";
+            }
+            else
+            {
+                BtnText = "No IP yet, let's start!";
+            }
         }
 
-        private void IpResultsEventChanged(IpAddress message)
+        private async void ExecuteMainBtnCommand()
         {
-            throw new NotImplementedException();
+            _eventAggregator.GetEvent<IpEntryEvent>().Subscribe(IpQueryChanged);
+
+            await _navigationService.NavigateAsync("QuestionsPage");
         }
+
+        private void IpQueryChanged(IpQuery message)
+        {
+            _eventAggregator.GetEvent<IpEntryEvent>().Unsubscribe(IpQueryChanged);
+            _hasResults = true;
+        }
+        
     }
 }

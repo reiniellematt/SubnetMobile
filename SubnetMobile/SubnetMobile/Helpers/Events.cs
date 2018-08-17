@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SubnetMobile.Events
+namespace SubnetMobile.Helpers
 {
     public class IpEntryEvent : PubSubEvent<IpQuery> { }
-    public class IpResultsEvent : PubSubEvent<IpAddress> { }
+    public class IpResultsEvent : PubSubEvent<IpResults> { }
 }

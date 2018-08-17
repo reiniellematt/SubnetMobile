@@ -29,6 +29,22 @@ namespace SubnetMobile.Models
         /// </summary>
         public int FourthOctet { get; set; }
 
+        /// <summary>
+        /// Initializes an empty IP address.
+        /// </summary>
+        public IpAddress() { }
+
+        /// <summary>
+        /// Creates an IP address with its octets or values.
+        /// </summary>
+        public IpAddress(int firstOctet, int secondOctet, int thirdOctet, int fourthOctet)
+        {
+            FirstOctet = firstOctet;
+            SecondOctet = secondOctet;
+            ThirdOctet = thirdOctet;
+            FourthOctet = fourthOctet;
+        }
+
         public override string ToString()
         {
             return $"{ FirstOctet }.{ SecondOctet }.{ ThirdOctet }.{ FourthOctet }";

@@ -22,6 +22,6 @@
         <Label Text="Subnet Broadcast Address"/>
         <ListView Margin="0,0,0,72"/>
 
-        <Button HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" FontSize="Medium" Text="AGAIN"/>
+        <Button Command="{Binding MainBtnCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" FontSize="Medium" Text="{Binding BtnText}"/>
     </StackLayout>
 </ContentPage>
