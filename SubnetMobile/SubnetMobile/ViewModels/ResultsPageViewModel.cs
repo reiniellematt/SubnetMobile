@@ -3,7 +3,6 @@ using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
-using SubnetMobile.Helpers;
 using SubnetMobile.Models;
 using System;
 using System.Collections.Generic;
@@ -46,16 +45,7 @@ namespace SubnetMobile.ViewModels
 
         private async void ExecuteMainBtnCommand()
         {
-            _eventAggregator.GetEvent<IpEntryEvent>().Subscribe(IpQueryChanged);
-
             await _navigationService.NavigateAsync("QuestionsPage");
         }
-
-        private void IpQueryChanged(IpQuery message)
-        {
-            _eventAggregator.GetEvent<IpEntryEvent>().Unsubscribe(IpQueryChanged);
-            _hasResults = true;
-        }
-        
     }
 }

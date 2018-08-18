@@ -2,7 +2,6 @@
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
-using SubnetMobile.Helpers;
 using SubnetMobile.Models;
 using System;
 using System.Collections.Generic;
@@ -66,14 +65,6 @@ namespace SubnetMobile.ViewModels
                 ThirdOctet = int.Parse(ThirdOctetEntry),
                 FourthOctet = int.Parse(FourthOctetEntry)
             };
-
-            IpQuery ipQuery = new IpQuery
-            {
-                NumberOfSubnets = int.Parse(NumberOfSubnetsEntry),
-                StartingIpAddress = ip
-            };
-
-            _eventAggregator.GetEvent<IpEntryEvent>().Publish(ipQuery);
 
             await _navigationService.GoBackAsync();
         }
