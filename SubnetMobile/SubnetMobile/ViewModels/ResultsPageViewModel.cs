@@ -3,6 +3,7 @@ using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
+using SubnetMobile.Helpers;
 using SubnetMobile.Models;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,20 @@ namespace SubnetMobile.ViewModels
         private readonly IEventAggregator _eventAggregator;
 
         private bool _hasResults = false;
-        private string _btnText;
 
         public string BtnText
         {
-            get { return _btnText; }
-            set { SetProperty(ref _btnText, value); }
+            get
+            {
+                if (_hasResults)
+                {
+                    return "AGAIN";
+                }
+                else
+                {
+                    return "No IP yet, let's start!";
+                }
+            }
         }
 
         private DelegateCommand mainBtnCommand;
@@ -33,19 +42,20 @@ namespace SubnetMobile.ViewModels
             _navigationService = navigationService;
             _eventAggregator = eventAggregator;
 
-            if (_hasResults)
-            {
-                BtnText = "AGAIN";
-            }
-            else
-            {
-                BtnText = "No IP yet, let's start!";
-            }
+            
+
+            _eventAggregator.GetEvent<SubnetQueryEvent>().Subscribe(OnSubnetQueryChanged);
         }
 
         private async void ExecuteMainBtnCommand()
         {
             await _navigationService.NavigateAsync("QuestionsPage");
+        }
+
+        private void OnSubnetQueryChanged(SubnetQuery subnetQuery)
+        {
+            _hasResults = true;
+            RaisePropertyChanged("BtnText");
         }
     }
 }
