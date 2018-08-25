@@ -45,9 +45,12 @@ namespace SubnetMobile.Models
             FourthOctet = fourthOctet;
         }
 
-        public override string ToString()
+        public string DisplayName
         {
-            return $"{ FirstOctet }.{ SecondOctet }.{ ThirdOctet }.{ FourthOctet }";
+            get
+            {
+                return $"{FirstOctet}.{SecondOctet}.{ThirdOctet}.{FourthOctet}";
+            }
         }
     }
 }

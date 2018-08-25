@@ -12,7 +12,15 @@
 
         <!-- Subnetwork Addresses List -->
         <Label Text="Subnetwork Address"/>
-        <ListView Margin="0,0,0,72"/>
+        <ListView Margin="0,0,0,0" ItemsSource="{Binding SubnetworkAddresses}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label TextColor="White" Text="{Binding DisplayName}"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
         <!-- Subnet Host List -->
         <Label Text="Subnet Host Address"/>

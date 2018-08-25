@@ -43,6 +43,7 @@
                 <Setter Property="FontSize" Value="Medium"/>
             </Style>
 
+
         </ResourceDictionary>
 
     </prism:PrismApplication.Resources>

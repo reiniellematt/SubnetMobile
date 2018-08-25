@@ -27,6 +27,8 @@ namespace SubnetMobile.Models
         /// <param name="ip">The IP address.</param>
         public CompleteIpInfo(IpAddress ip)
         {
+            MainIp = ip;
+
             if (ip.FirstOctet >= 1 && ip.FirstOctet <= 126)
             {
                 SubnetMask = new IpAddress(255, 0, 0, 0);
