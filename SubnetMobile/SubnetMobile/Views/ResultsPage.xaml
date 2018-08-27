@@ -24,7 +24,15 @@
 
         <!-- Subnet Host List -->
         <Label Text="Subnet Host Address"/>
-        <ListView Margin="0,0,0,72"/>
+        <ListView ItemsSource="{Binding SubnetHostAddresses}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label TextColor="White" Text="{Binding}"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
         <!-- Subnet Broadcast List -->
         <Label Text="Subnet Broadcast Address"/>

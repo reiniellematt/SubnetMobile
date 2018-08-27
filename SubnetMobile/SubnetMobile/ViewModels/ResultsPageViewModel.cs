@@ -21,7 +21,7 @@ namespace SubnetMobile.ViewModels
 
         private bool _hasResults = false;
         private ObservableCollection<IpAddress> _subnetworkAddresses = new ObservableCollection<IpAddress>();
-        private ObservableCollection<IpAddress> _subnetHostAddresses = new ObservableCollection<IpAddress>();
+        private ObservableCollection<string> _subnetHostAddresses = new ObservableCollection<string>();
         private ObservableCollection<IpAddress> _subnetBroadcastAddresses = new ObservableCollection<IpAddress>();
 
         public string BtnText
@@ -43,7 +43,7 @@ namespace SubnetMobile.ViewModels
             get { return _subnetworkAddresses; }
             set { SetProperty(ref _subnetworkAddresses, value); }
         }
-        public ObservableCollection<IpAddress> SubnetHostAddresses
+        public ObservableCollection<string> SubnetHostAddresses
         {
             get { return _subnetHostAddresses; }
             set { SetProperty(ref _subnetHostAddresses, value); }
@@ -78,6 +78,7 @@ namespace SubnetMobile.ViewModels
             RaisePropertyChanged("BtnText");
 
             SubnetworkAddresses.Clear();
+            SubnetHostAddresses.Clear();
             SubnetBroadcastAddresses.Clear();
 
             _eventAggregator.GetEvent<SubnetQueryEvent>().Unsubscribe(OnSubnetQueryChanged);
@@ -87,6 +88,9 @@ namespace SubnetMobile.ViewModels
 
         private void CalculateSubnets(SubnetQuery subnetQuery)
         {
+            // Yeah, this needs some refactoring.
+            // TASK: REFACTOR THIS
+
             int bits = Convert.ToString(subnetQuery.NumberOfSubnets, 2).Length;
             int interval = GetInterval(bits);
             IpAddress startIp = subnetQuery.StartingIpAddress.MainIp;
@@ -96,7 +100,11 @@ namespace SubnetMobile.ViewModels
             for (int i = 0; i < subnetQuery.NumberOfSubnets; i++)
             {
                 SubnetworkAddresses.Add(snAdd);
+                snAdd.FourthOctet += 1;
+                SubnetHostAddresses.Add($"{snAdd.DisplayName} - ");
+                snAdd.FourthOctet -= 1;
                 snAdd.FourthOctet += interval;
+
             }
 
             sbAdd.FourthOctet = interval - 1;
@@ -104,6 +112,11 @@ namespace SubnetMobile.ViewModels
             for (int i = 0; i < subnetQuery.NumberOfSubnets; i++)
             {
                 SubnetBroadcastAddresses.Add(sbAdd);
+
+                sbAdd.FourthOctet -= 1;
+                SubnetHostAddresses[i] += $"{sbAdd.DisplayName}";
+                sbAdd.FourthOctet += 1;
+
                 sbAdd.FourthOctet += interval;
             }
         }
