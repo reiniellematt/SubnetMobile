@@ -12,7 +12,7 @@
 
         <!-- Subnetwork Addresses List -->
         <Label Text="Subnetwork Address"/>
-        <ListView Margin="0,0,0,0" ItemsSource="{Binding SubnetworkAddresses}">
+        <ListView ItemsSource="{Binding SubnetworkAddresses}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -28,7 +28,15 @@
 
         <!-- Subnet Broadcast List -->
         <Label Text="Subnet Broadcast Address"/>
-        <ListView Margin="0,0,0,72"/>
+        <ListView ItemsSource="{Binding SubnetBroadcastAddresses}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label TextColor="White" Text="{Binding DisplayName}"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
         <Button Command="{Binding MainBtnCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" FontSize="Medium" Text="{Binding BtnText}"/>
     </StackLayout>
