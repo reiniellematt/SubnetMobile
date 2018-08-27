@@ -20,6 +20,8 @@ namespace SubnetMobile.ViewModels
         private readonly IPageDialogService _dialogService;
 
         private bool _hasResults = false;
+        private string _subnetMask;
+        private string _prefixLength;
         private ObservableCollection<IpAddress> _subnetworkAddresses = new ObservableCollection<IpAddress>();
         private ObservableCollection<string> _subnetHostAddresses = new ObservableCollection<string>();
         private ObservableCollection<IpAddress> _subnetBroadcastAddresses = new ObservableCollection<IpAddress>();
@@ -37,6 +39,16 @@ namespace SubnetMobile.ViewModels
                     return "No IP yet, let's start!";
                 }
             }
+        }
+        public string SubnetMask
+        {
+            get { return _subnetMask; }
+            set { SetProperty(ref _subnetMask, value); }
+        }
+        public string PrefixLength
+        {
+            get { return _prefixLength; }
+            set { SetProperty(ref _prefixLength, value); }
         }
         public ObservableCollection<IpAddress> SubnetworkAddresses
         {
@@ -97,6 +109,9 @@ namespace SubnetMobile.ViewModels
             IpAddress snAdd = startIp;
             IpAddress sbAdd = startIp;
 
+            PrefixLength = $"{subnetQuery.StartingIpAddress.PrefixLength + bits}";
+            SubnetMask = subnetQuery.StartingIpAddress.SubnetMask.DisplayName;
+
             for (int i = 0; i < subnetQuery.NumberOfSubnets; i++)
             {
                 SubnetworkAddresses.Add(snAdd);
@@ -104,7 +119,6 @@ namespace SubnetMobile.ViewModels
                 SubnetHostAddresses.Add($"{snAdd.DisplayName} - ");
                 snAdd.FourthOctet -= 1;
                 snAdd.FourthOctet += interval;
-
             }
 
             sbAdd.FourthOctet = interval - 1;

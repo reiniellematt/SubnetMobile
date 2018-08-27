@@ -7,9 +7,13 @@
              NavigationPage.HasNavigationBar="False">
 
     <StackLayout>
-        <!-- New Subnet Mask -->
-        <Label Text=""/>
-
+        <StackLayout Orientation="Horizontal">
+            <!-- New Subnet Mask -->
+            <Label Text="{Binding SubnetMask}"/>
+            <Label Text="Prefix Length:" Margin="8,0,0,0"/>
+            <Label Text="{Binding PrefixLength}"/>
+        </StackLayout>
+        
         <!-- Subnetwork Addresses List -->
         <Label Text="Subnetwork Address"/>
         <ListView ItemsSource="{Binding SubnetworkAddresses}">
