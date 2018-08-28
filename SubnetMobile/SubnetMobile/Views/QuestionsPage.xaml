@@ -15,19 +15,19 @@
         <Label Text="Starting IP Address"/>
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
             <!-- First Octet -->
-            <Entry Keyboard="Numeric" WidthRequest="40" MaxLength="3" Text="{Binding FirstOctetEntry}"/>
+            <Entry Keyboard="Numeric" MaxLength="3" Text="{Binding FirstOctetEntry}"/>
             <Label TextColor="#2ECC71" FontSize="{StaticResource HeaderLabelFontSize}" Text="."/>
 
             <!-- Second Octet -->
-            <Entry Keyboard="Numeric" WidthRequest="40" MaxLength="3" Text="{Binding SecondOctetEntry}"/>
+            <Entry Keyboard="Numeric" MaxLength="3" Text="{Binding SecondOctetEntry}"/>
             <Label TextColor="#2ECC71" FontSize="{StaticResource HeaderLabelFontSize}" Text="."/>
 
             <!-- Third Octet -->
-            <Entry Keyboard="Numeric" WidthRequest="40" MaxLength="3" Text="{Binding ThirdOctetEntry}"/>
+            <Entry Keyboard="Numeric" MaxLength="3" Text="{Binding ThirdOctetEntry}"/>
             <Label TextColor="#2ECC71" FontSize="{StaticResource HeaderLabelFontSize}" Text="."/>
 
             <!-- Fourth Octet -->
-            <Entry Keyboard="Numeric" WidthRequest="40" MaxLength="3" Text="{Binding FourthOctetEntry}"/>
+            <Entry Keyboard="Numeric" MaxLength="3" Text="{Binding FourthOctetEntry}"/>
         </StackLayout>
 
         <Button Command="{Binding NextCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" FontSize="Medium" Text="NEXT"/>

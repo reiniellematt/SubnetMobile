@@ -15,6 +15,12 @@
                 </On>
             </OnPlatform>
 
+            <OnPlatform x:Key="EntryWidthRequest" x:TypeArguments="x:Double">
+                <On Platform="Android">
+                    <OnIdiom x:TypeArguments="x:Double" Phone="40" Tablet="60"/>
+                </On>
+            </OnPlatform>
+            
             <Style TargetType="{x:Type StackLayout}">
                 <Setter Property="BackgroundColor" Value="#2E2E2E"/>
                 <Setter Property="Padding" Value="4"/>
@@ -41,6 +47,7 @@
             <Style TargetType="{x:Type Entry}">
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="WidthRequest" Value="{StaticResource EntryWidthRequest}"/>
             </Style>
 
 
