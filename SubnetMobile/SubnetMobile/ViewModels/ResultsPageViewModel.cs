@@ -101,7 +101,7 @@ namespace SubnetMobile.ViewModels
         private void CalculateSubnets(SubnetQuery subnetQuery)
         {
             // Yeah, this needs some refactoring.
-            // TASK: REFACTOR THIS
+            // TODO: Refactor this
 
             int bits = Convert.ToString(subnetQuery.NumberOfSubnets, 2).Length;
             int interval = GetInterval(bits);
@@ -110,7 +110,9 @@ namespace SubnetMobile.ViewModels
             IpAddress sbAdd = startIp;
 
             PrefixLength = $"{subnetQuery.StartingIpAddress.PrefixLength + bits}";
-            SubnetMask = subnetQuery.StartingIpAddress.SubnetMask.DisplayName;
+
+            // TASK: GET THE NEW SUBNET MASK.
+            SubnetMask = GetNewSubnetMask(subnetQuery.StartingIpAddress.SubnetMask, bits);
 
             for (int i = 0; i < subnetQuery.NumberOfSubnets; i++)
             {
@@ -179,6 +181,49 @@ namespace SubnetMobile.ViewModels
             }
 
             return interval;
+        }
+
+        private string GetNewSubnetMask(IpAddress initialSubnetMask, int bits)
+        {
+            switch (bits)
+            {
+                case 1:
+                    initialSubnetMask.FourthOctet = 128;
+                    break;
+
+                case 2:
+                    initialSubnetMask.FourthOctet = 192;
+                    break;
+
+                case 3:
+                    initialSubnetMask.FourthOctet = 224;
+                    break;
+
+                case 4:
+                    initialSubnetMask.FourthOctet = 240;
+                    break;
+
+                case 5:
+                    initialSubnetMask.FourthOctet = 248;
+                    break;
+
+                case 6:
+                    initialSubnetMask.FourthOctet = 252;
+                    break;
+
+                case 7:
+                    initialSubnetMask.FourthOctet = 254;
+                    break;
+
+                case 8:
+                    initialSubnetMask.FourthOctet = 255;
+                    break;
+
+                default:
+                    break;
+            }
+
+            return initialSubnetMask.DisplayName;
         }
     }
 }
